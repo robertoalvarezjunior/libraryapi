@@ -29,7 +29,7 @@ class LivroRepositoryTest {
         livro.setGenero(GeneroLivro.FANTASIA);
         livro.setPreco(BigDecimal.valueOf(100));
 
-        Autor autor = autorRepository.findById(UUID.fromString("8d62c508-083c-4586-9065-275b49aff2e2")).orElse(null);
+        Autor autor = autorRepository.findById(UUID.fromString("4aba2cf0-ddef-4418-9142-ef2639419fa0")).orElse(null);
 
         livro.setAutor(autor);
 
@@ -122,5 +122,14 @@ class LivroRepositoryTest {
     @Test
     void updateDataPublicacaoTest(){
         livroRepository.updateDataPublicacao(LocalDate.of(2025, 6,11));
+    }
+
+    @Test
+    void listarLivrosAutorTest(){
+        UUID idAutor = UUID.fromString("4aba2cf0-ddef-4418-9142-ef2639419fa0");
+        Autor autor = autorRepository.findById(idAutor).orElse(null);
+        List<Livro> livros = livroRepository.findByAutor(autor);
+        autor.setLivros(livros);
+        autor.getLivros().forEach(System.out::println);
     }
 }

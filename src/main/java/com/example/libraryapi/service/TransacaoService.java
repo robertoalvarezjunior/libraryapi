@@ -5,7 +5,7 @@ import com.example.libraryapi.model.GeneroLivro;
 import com.example.libraryapi.model.Livro;
 import com.example.libraryapi.repository.AutorRepository;
 import com.example.libraryapi.repository.LivroRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,11 +14,11 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class TransacaoService {
-    @Autowired
+
     private AutorRepository autorRepository;
 
-    @Autowired
     private LivroRepository livroRepository;
 
     @Transactional
